@@ -1,4 +1,3 @@
-const { type } = require('express/lib/response')
 const mongoose = require('mongoose')
 
 const TodoListSchema = new mongoose.Schema({
