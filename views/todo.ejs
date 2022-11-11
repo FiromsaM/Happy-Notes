@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="cs/style.css">
+</head>
+<body>
+    <h1>TODO LIST</h1>
+    <ul class="todoItems">
+        <% for(let i = 0; i < todos.length; i++) { %>
+            <li data-id="<%= todos[i]._id %>">
+                <% if(todos[i].completed === true ) { %>
+                    <span class="completed"><%= todos[i].todo%></span>            
+                <%} else { %>
+                    <span><%= todos[i].todo%></span>
+                <% } %>
+                <span class="del">del</span>
+            </li>
+        <% } %>
+    </ul>
+   
+
+
+    <h2>Todo's left: <%= left %></h2>
+
+    <form action="/todo/createTodo" method="POST">
+        <input type="text" placeholder="Input Todo" name="todo">
+        <button type="submit"> Submit</button>
+    </form>
+    <script src="js/main.js"></script>
+</body>
+</html>
