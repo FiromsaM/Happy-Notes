@@ -8,6 +8,10 @@ const TodoListSchema = new mongoose.Schema({
     completed: {
         type: Boolean,
         require: true
+    },
+    userId: {
+      type: String,
+      required: true
     }
 })
 

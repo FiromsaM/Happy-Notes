@@ -1,5 +1,5 @@
-const todoItem = document.querySelectorAll('.todoItems span')
-const itemCompleted = document.querySelectorAll('.completed')
+const todoItem = document.querySelectorAll('span.not')
+const itemCompleted = document.querySelectorAll('span.completed')
 const deleteItem = document.querySelectorAll('.del')
 
 Array.from(itemCompleted).forEach((el) => {

@@ -4,9 +4,9 @@ const User = require('../models/User')
 
  exports.getLogin = (req, res) => {
     if (req.user) {
-      return res.redirect('/todos')
+      return res.redirect('/todo')
     }
-    res.render('login', {
+    res.render('login.ejs', {
       title: 'Login'
     })
   }
@@ -31,7 +31,7 @@ const User = require('../models/User')
       req.logIn(user, (err) => {
         if (err) { return next(err) }
         req.flash('success', { msg: 'Success! You are logged in.' })
-        res.redirect(req.session.returnTo || '/todos')
+        res.redirect(req.session.returnTo || '/todo')
       })
     })(req, res, next)
   }
@@ -49,9 +49,9 @@ const User = require('../models/User')
   
   exports.getSignup = (req, res) => {
     if (req.user) {
-      return res.redirect('/todos')
+      return res.redirect('/todo')
     }
-    res.render('signup', {
+    res.render('signup.ejs', {
       title: 'Create Account'
     })
   }
@@ -89,7 +89,7 @@ const User = require('../models/User')
           if (err) {
             return next(err)
           }
-          res.redirect('/todos')
+          res.redirect('/todo')
         })
       })
     })
