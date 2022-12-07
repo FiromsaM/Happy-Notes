@@ -1,23 +1,57 @@
 <%- include('partials/header') -%>
 
-    <h1>Todos</h1>
-    <ul>
-    <% todo.forEach( el => { %>
-            <li class='todoItem' data-id='<%=el._id%>'>
-                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                <span class='del'> Delete </span>
-            </li>
-    <% }) %>    
-    </ul>
+      <h1 class=""><a href="/todo">Create Your VERY OWN Notes!</a></h1>
+    
+    <h1>Welcome <%= user.userName %></h1>
+    <div class="card w-96 bg-base-100 shadow-xl">
+        <div class="card-body">
+            <ul>
+            <% todo.forEach( el => { %>
+                    <li class='todoItem card-title' data-id='<%=el._id%>'>
+                        <% if( el.completed === true) { %>
+                            <input type="checkbox" checked="checked" class="checkbox card-actions justify-end completed" />
+                            <span><%= el.todo %></span>
+                        <%} else { %>
+                            <input type="checkbox" class="checkbox not"/>
+                            <span><%= el.todo %></span>
+                        <% } %>
+                        <span class='del fa fa-trash'></span>
+                    </li>
+            <% }) %>    
+            </ul>
+        </div>
+    </div>
 
-    <h2><%= user.userName %> has <%= left %> things left to do.</h2>
+    <h2 class="badge"> <%= left %> Task Left.</h2>
 
     <form action="/todo/createTodo" method='POST'>
-        <input type="text" placeholder="Enter Todo Item" name='todo'>
-        <input class="btn btn-primary" type="submit">
+        <input type="text" placeholder="Enter Notes" name='todo' class="input input-bordered w-full max-w-xs">
+        <button class="btn ">Submit</button>
     </form>
+
+
+    <div class="card">
+        <div class="card-body">
+            <select data-choose-theme class="select data-theme w-full max-w-xs">
+                <option disabled selected>Select Your Theme:</option>
+                <option value="light">Default</option>
+                <option value="dark">Dark</option>
+                <option value="synthwave">Synthwave</option>
+                <option value="cupcake">cupcake</option>
+                <option value="black">Black</option>
+                <option value="coffee">Coffee</option>
+                <option value="cyberpunk">cyberpunk</option>
+                <option value="luxury">Luxury</option>
+                <option value="acid">Acid</option>
+                <option value="winter">Winter</option>
+                <option value="aqua">Aquat</option>
+              </select>   
+        </div>
+    </div>
 
     <a href="/logout">Logout</a>
 
     <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
+
 <%- include('partials/footer') -%>
