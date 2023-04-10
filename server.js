@@ -10,7 +10,7 @@ const logger = require('morgan')
 const connectDB = require('./config/db')
 const homeRoutes = require('./routes/home')
 const todoRoutes = require('./routes/todo')
-
+ 
 //Load config
 dotenv.config({ path: './config/.env' })
 
